@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import {dezThemeSet} from './ThemeDemo';
 
 export const ThemeContext = createContext();
 
@@ -159,39 +158,6 @@ const ThemeContextProvider = (props) => {
         name.value === "boxed" && changeSideBarStyle({ value: "overlay", label: "Overlay" });
     };
 
-    const setDemoTheme = (theme,direction) => {
-        let setAttr = {}
-        let themeSettings = dezThemeSet[theme];
-        body.setAttribute("data-typography", themeSettings.typography);
-
-        setAttr.value = themeSettings.version;
-        changeBackground(setAttr);
-
-        setAttr.value = themeSettings.layout;
-        changeSideBarLayout(setAttr);
-
-        changePrimaryColor(themeSettings.primary);
-        changeNavigationHader(themeSettings.navheaderBg);
-        chnageHaderColor(themeSettings.headerBg);
-
-        setAttr.value = themeSettings.sidebarStyle;
-        changeSideBarStyle(setAttr);
-
-        chnageSidebarColor(themeSettings.sidebarBg);
-
-        setAttr.value = themeSettings.sideBarPosition;
-        changeSideBarPostion(setAttr);
-
-        setAttr.value = themeSettings.headerPosition;
-        changeHeaderPostion(setAttr);
-
-        setAttr.value = themeSettings.containerLayout;
-        changeContainerPosition(setAttr);
-
-        setAttr.value = direction;
-        changeDirectionLayout(setAttr);
-    };
-
     useEffect(() => {
     const body = document.querySelector("body");
         body.setAttribute("data-typography", "poppins");
@@ -262,8 +228,7 @@ const ThemeContextProvider = (props) => {
                 openMenuToggle,
                 changeBackground,
                 background,
-                containerPosition_,
-                setDemoTheme,
+                containerPosition_
             }}
         >
             {props.children}
