@@ -1,4 +1,4 @@
-# Expenses List Service
+# Expenses List
 This project was created to save time and money with features that make your shopping that much better.
 
 Its purpose is to make possible to TODO.
