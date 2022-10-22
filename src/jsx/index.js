@@ -36,6 +36,8 @@ const Markup = () => {
     /// Products
     { url: "products-my", component: AppProfile },
     { url: "products-system", component: Compose },
+    { url: "products-type", component: Compose },
+    { url: "products-category", component: Compose },
 
     /// Shopping
     { url: "shopping-lists", component: ProductDetail },

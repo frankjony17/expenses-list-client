@@ -18304,7 +18304,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .photo-content {
   position: relative; }
   .photo-content .cover-photo {
-    background: url(../images/profile/cover.jpg);
+    background: url(../images/user.jpg);
     background-size: cover;
     background-position: center;
     min-height: 15.625rem;
@@ -24890,7 +24890,7 @@ table.dataTable.display tbody td {
         padding: 1.875rem 0rem; } }
 
 .welcome-content {
-  background: url("./../images/1.jpg");
+  background: url("./../images/user.jpg");
   background-size: cover;
   background-position: center;
   height: 100%;

@@ -6,9 +6,7 @@ import {Dropdown} from 'react-bootstrap';
 import ChatRoom from './Messages/ChatRoom';
 
 //Image
-import pic11 from './../../../images/contacts/pic11.jpg';
-import pic22 from './../../../images/contacts/pic22.jpg';
-import pic33 from './../../../images/contacts/pic33.jpg';
+import user from './../../../images/user.jpg';
 
 const Messages = () =>{
 	return(
@@ -81,7 +79,7 @@ const Messages = () =>{
 												<div className="chat-bx  border-bottom">
 													<div className="px-3 d-flex">
 														<div className="chat-img">
-															<img src={pic22} alt="" />
+															<img src={user} alt="" />
 															<span className="active"></span>
 														</div>
 														<div className="w-100">
@@ -99,7 +97,7 @@ const Messages = () =>{
 												<div className="chat-bx  border-bottom">
 													<div className="px-3 d-flex">
 														<div className="chat-img">
-															<img src={pic11} alt="" />
+															<img src={user} alt="" />
 															<span className="active"></span>
 														</div>
 														<div className="w-100">
@@ -117,7 +115,7 @@ const Messages = () =>{
 												<div className="chat-bx  border-bottom">
 													<div className="px-3 d-flex">
 														<div className="chat-img">
-															<img src={pic33} alt="" />
+															<img src={user} alt="" />
 															<span className="active"></span>
 														</div>
 														<div className="w-100">
@@ -134,7 +132,7 @@ const Messages = () =>{
 												<div className="chat-bx  border-bottom">
 													<div className="px-3 d-flex">
 														<div className="chat-img">
-															<img src={pic22} alt="" />
+															<img src={user} alt="" />
 															<span className="active"></span>
 														</div>
 														<div className="w-100">

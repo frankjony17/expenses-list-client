@@ -75,7 +75,9 @@ const SideBar = () => {
     ],
     products = [
         "products-my",
-        "products-system"
+        "products-system",
+        "products-type",
+        "products-category",
     ],
     shopping = [
         "shopping-lists"
@@ -119,6 +121,8 @@ const SideBar = () => {
             <ul>
               <li><Link className={`${path === "products-my" ? "mm-active" : ""}`} to="/products-my">My products</Link></li>
               <li><Link className={`${path === "products-system" ? "mm-active" : ""}`} to="/products-system">System products</Link></li>
+              <li><Link className={`${path === "products-type" ? "mm-active" : ""}`} to="/products-type">Product Type</Link></li>
+              <li><Link className={`${path === "products-category" ? "mm-active" : ""}`} to="/products-category">Product Category</Link></li>
             </ul>
           </li>
           <li className={`${shopping.includes(path) ? "mm-active" : ""}`}>

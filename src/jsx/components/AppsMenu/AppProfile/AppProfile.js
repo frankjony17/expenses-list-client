@@ -3,16 +3,16 @@ import { Button, Dropdown, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 //** Import Image */
-import profile01 from "../../../../images/profile/1.jpg";
-import profile02 from "../../../../images/profile/2.jpg";
-import profile03 from "../../../../images/profile/3.jpg";
-import profile04 from "../../../../images/profile/4.jpg";
-import profile05 from "../../../../images/profile/5.jpg";
-import profile06 from "../../../../images/profile/6.jpg";
-import profile07 from "../../../../images/profile/7.jpg";
-import profile08 from "../../../../images/profile/8.jpg";
-import profile09 from "../../../../images/profile/9.jpg";
-import profile from "../../../../images/profile/profile.png";
+import profile01 from "../../../../images/user.jpg";
+import profile02 from "../../../../images/user.jpg";
+import profile03 from "../../../../images/user.jpg";
+import profile04 from "../../../../images/user.jpg";
+import profile05 from "../../../../images/user.jpg";
+import profile06 from "../../../../images/user.jpg";
+import profile07 from "../../../../images/user.jpg";
+import profile08 from "../../../../images/user.jpg";
+import profile09 from "../../../../images/user.jpg";
+import profile from "../../../../images/user.jpg";
 import PageTitle from "../../../layouts/PageTitle";
 
 const AppProfile = () => {

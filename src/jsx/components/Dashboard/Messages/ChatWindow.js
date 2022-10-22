@@ -3,8 +3,8 @@ import React, { Component } from "react";
 
 
 
-import cont3 from './../../../../images/contacts/3.jpg';
-import g1 from './../../../../images/group/g1.jpg';
+import cont3 from './../../../../images/user.jpg';
+import g1 from './../../../../images/user.jpg';
 
 // we are using class component here bcoz functional components cant use react life cycle hooks such as componentDidUpdate
 export default class ChatWindow extends Component {

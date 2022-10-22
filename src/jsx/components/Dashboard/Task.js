@@ -5,15 +5,15 @@ import swal from "sweetalert";
 import {nanoid} from 'nanoid';
 //Images
 //import data from './../Boltz/Task/Postpage.json';
-import card1 from './../../../images/task/img1.jpg';
-import card2 from './../../../images/task/img2.jpg';
-import card3 from './../../../images/task/img3.jpg';
-import card4 from './../../../images/task/img4.jpg';
-import card5 from './../../../images/task/img5.jpg';
-import card6 from './../../../images/task/img6.jpg';
-import card7 from './../../../images/task/img7.jpg';
-import card8 from './../../../images/task/img8.jpg';
-import user from './../../../images/task/user.jpg';
+import card1 from './../../../images/user.jpg';
+import card2 from './../../../images/user.jpg';
+import card3 from './../../../images/user.jpg';
+import card4 from './../../../images/user.jpg';
+import card5 from './../../../images/user.jpg';
+import card6 from './../../../images/user.jpg';
+import card7 from './../../../images/user.jpg';
+import card8 from './../../../images/user.jpg';
+import user from './../../../images/user.jpg';
 
 const CardListBlog = [
 	{ 
