@@ -32,7 +32,7 @@ const NavHader = () => {
                 </g>
             </svg>
             <div className="brand-title">
-                <h2 className="">Expenses List</h2>
+                <h2 className="">Expenses</h2>
                 <span className="brand-sub-title">Shopping List much better</span>
             </div>
         </Fragment>

@@ -5,18 +5,55 @@ import {
     logout,
 } from '../store/actions/AuthActions';
 
-export function signUp(email, password) {
-    //axios call
-    const postData = {
-        email,
-        password,
-        returnSecureToken: true,
-    };
-    return axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD3RPAp3nuETDn9OQimqn_YF6zdzqWITII`,
-        postData,
-    );
-}
+
+export const signUp = async (user) => {
+    // const configs = {
+    //     headers: {
+    //         "Referer": process.env.REACT_APP_SERVER_HOST,
+    //         "Referrer-Policy": "strict-origin-when-cross-origin"
+    //     }
+    // };
+
+    // const config = {
+    //     method: 'post',
+    //     url: `${process.env.REACT_APP_SERVER_HOST}/items`,
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Origin': 'http://localhost:3000/',
+    //         'Referer': 'http://localhost:3000/',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     data: {
+    //         username: user.email,
+    //         password: user.password,
+    //         password2: user.password,
+    //         email: user.email,
+    //         first_name: user.first_name,
+    //         last_name: user.last_name,
+    //     }
+    // };
+
+    // return await axios.request(config);
+    console.log("fetch request")
+    return await fetch(`${process.env.REACT_APP_SERVER_HOST}/api/v1/auth/register`, {
+        method: 'POST',
+        body: JSON.stringify({
+            username: user.email,
+            password: user.password,
+            password2: user.password,
+            email: user.email,
+            first_name: user.first_name,
+            last_name: user.last_name,
+        }),
+        headers: {
+            'Access-Control-Allow-Credentials': true,
+            'Content-Type': 'application/json',
+        },
+        mode: "no-cors",
+    })
+};
+
+
 
 export function login(email, password) {
     const postData = {
@@ -46,7 +83,6 @@ export function formatError(errorResponse) {
             break;
         case 'USER_DISABLED':
             return 'User Disabled';
-
         default:
             return '';
     }

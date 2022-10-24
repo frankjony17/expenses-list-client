@@ -14,23 +14,21 @@ export const LOGIN_FAILED_ACTION = '[login action] failed login';
 export const LOADING_TOGGLE_ACTION = '[Loading action] toggle loading';
 export const LOGOUT_ACTION = '[Logout action] logout action';
 
-export function signupAction(email, password, history) {
-    return (dispatch) => {
-        signUp(email, password)
-        .then((response) => {
+export const signupAction = (user, history) => {
+    return async (dispatch) => {
+        try {
+            const response = await signUp(user);
+
             saveTokenInLocalStorage(response.data);
-            runLogoutTimer(
-                dispatch,
-                response.data.expiresIn * 1000,
-                history,
-            );
+            runLogoutTimer(dispatch, response.data.expiresIn * 1000, history);
+
             dispatch(confirmedSignupAction(response.data));
             history.push('/dashboard');
-        })
-        .catch((error) => {
-            const errorMessage = formatError(error.response.data);
+        } catch (error) {
+            console.log(error);
+            const errorMessage = formatError(error);
             dispatch(signupFailedAction(errorMessage));
-        });
+        }
     };
 }
 
