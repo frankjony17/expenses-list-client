@@ -41,7 +41,7 @@ const Header = ({ onNote }) => {
         ? filterName.filter((f) => f !== "editor")
         : filterName;
 
-    const state = store.getState();
+    const user = store.getState().auth.user;
 
     return (
         <div className="header border-bottom">
@@ -330,8 +330,8 @@ const Header = ({ onNote }) => {
                         >
                             <img src={profile} width={20} alt="" />
                             <div className="header-info ms-3">
-                                <span className="fs-18 font-w500 mb-2">{state.auth.user.first_name} {state.auth.user.last_name}</span>
-                                <small className="fs-12 font-w400">{state.auth.user.email}</small>
+                                <span className="fs-18 font-w500 mb-2">{user.first_name} {user.last_name}</span>
+                                <small className="fs-12 font-w400">{user.email}</small>
                             </div>
                         </Dropdown.Toggle>
                         <Dropdown.Menu align="right" className="mt-3  mt-lg-0 dropdown-menu dropdown-menu-end">
