@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect } from 'react';
 /// Components
 import Index from "./jsx";
 import { connect, useDispatch } from 'react-redux';
-import {  Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 // action
 import { checkAutoLogin } from './services/AuthService';
 import { isAuthenticated } from './store/selectors/AuthSelectors';
@@ -13,7 +13,9 @@ import "./css/style.css";
 
 
 const SignUp = lazy(() => import('./jsx/pages/Registration'));
+
 const ForgotPassword = lazy(() => import('./jsx/pages/ForgotPassword'));
+
 const Login = lazy(() => {
     return new Promise(resolve => {
     setTimeout(() => resolve(import('./jsx/pages/Login')), 500);

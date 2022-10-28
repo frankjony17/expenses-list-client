@@ -1,88 +1,68 @@
 import axios from 'axios';
-import swal from "sweetalert";
-import {
-    loginConfirmedAction,
-    logout,
-} from '../store/actions/AuthActions';
 
 
-export const signUp = async (user) => {
-    // const configs = {
-    //     headers: {
-    //         "Referer": process.env.REACT_APP_SERVER_HOST,
-    //         "Referrer-Policy": "strict-origin-when-cross-origin"
-    //     }
-    // };
+import { loginConfirmedAction, logout } from '../store/actions/AuthActions';
+import { SweetAlert } from "../utils";
 
-    // const config = {
-    //     method: 'post',
-    //     url: `${process.env.REACT_APP_SERVER_HOST}/items`,
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Origin': 'http://localhost:3000/',
-    //         'Referer': 'http://localhost:3000/',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     data: {
-    //         username: user.email,
-    //         password: user.password,
-    //         password2: user.password,
-    //         email: user.email,
-    //         first_name: user.first_name,
-    //         last_name: user.last_name,
-    //     }
-    // };
 
-    // return await axios.request(config);
-    console.log("fetch request")
-    return await fetch(`${process.env.REACT_APP_SERVER_HOST}/api/v1/auth/register`, {
-        method: 'POST',
-        body: JSON.stringify({
-            username: user.email,
-            password: user.password,
-            password2: user.password,
-            email: user.email,
-            first_name: user.first_name,
-            last_name: user.last_name,
-        }),
-        headers: {
-            'Access-Control-Allow-Credentials': true,
-            'Content-Type': 'application/json',
-        },
-        mode: "no-cors",
-    })
+const HEADERS = {
+    headers: {
+        'Content-Type': 'application/json',
+    }
 };
 
-
+export const signUp = async (user) => {
+    const postData = {
+        username: user.email,
+        password: user.password,
+        password2: user.password,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+    };
+    return await axios.post(
+        `${process.env.REACT_APP_SERVER_HOST}/api/v1/auth/register`,
+        postData,
+        HEADERS
+    );
+};
 
 export function login(email, password) {
     const postData = {
-        email,
-        password,
-        returnSecureToken: true,
+        username: email,
+        password
     };
     return axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD3RPAp3nuETDn9OQimqn_YF6zdzqWITII`,
+        `${process.env.REACT_APP_SERVER_HOST}/api/v1/auth/token`,
         postData,
+        HEADERS
     );
 }
 
-export function formatError(errorResponse) {
-    switch (errorResponse.error.message) {
-        case 'EMAIL_EXISTS':
-            //return 'Email already exists';
-            swal("Oops", "Email already exists", "error");
+export function formatError(error) {
+    switch (true) {
+        case 'email' in error.details:
+            let error_email = error.details.email;
+            SweetAlert(
+                Array.isArray(error_email) ? `Email: ${error_email.join('\n')}` : `Email: ${error_email}`,
+                "error");
             break;
-        case 'EMAIL_NOT_FOUND':
-            //return 'Email not found';
-           swal("Oops", "Email not found", "error",{ button: "Try Again!",});
+        case 'username' in error.details:
+            let error_username = error.details.username;
+            SweetAlert(
+                Array.isArray(error_username) ? `Username: ${error_username.join('\n')}` : `Username: ${error_username}`,
+                "error");
            break;
-        case 'INVALID_PASSWORD':
-            //return 'Invalid Password';
-            swal("Oops", "Invalid Password", "error",{ button: "Try Again!",});
+        case 'password' in error.details:
+            let error_password = error.details.password;
+            SweetAlert(
+                Array.isArray(error_password) ? `Password: ${error_password.join('\n')}` : `Password: ${error_password}`,
+                "error");
             break;
-        case 'USER_DISABLED':
-            return 'User Disabled';
+        case 'error' in error.details:
+            let errors = error.details.error;
+            SweetAlert(Array.isArray(errors) ? errors.join('\n') : errors, "error");
+            break;
         default:
             return '';
     }
@@ -90,7 +70,7 @@ export function formatError(errorResponse) {
 
 export function saveTokenInLocalStorage(tokenDetails) {
     tokenDetails.expireDate = new Date(
-        new Date().getTime() + tokenDetails.expiresIn * 1000,
+        new Date().getTime() + 1440000, // 24 hours
     );
     localStorage.setItem('userDetails', JSON.stringify(tokenDetails));
 }
@@ -111,14 +91,14 @@ export function checkAutoLogin(dispatch, history) {
 
     tokenDetails = JSON.parse(tokenDetailsString);
     let expireDate = new Date(tokenDetails.expireDate);
-    let todaysDate = new Date();
+    let todayDate = new Date();
 
-    if (todaysDate > expireDate) {
+    if (todayDate > expireDate) {
         dispatch(logout(history));
         return;
     }
     dispatch(loginConfirmedAction(tokenDetails));
 
-    const timer = expireDate.getTime() - todaysDate.getTime();
+    const timer = expireDate.getTime() - todayDate.getTime();
     runLogoutTimer(dispatch, timer, history);
 }

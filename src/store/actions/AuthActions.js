@@ -20,13 +20,12 @@ export const signupAction = (user, history) => {
             const response = await signUp(user);
 
             saveTokenInLocalStorage(response.data);
-            runLogoutTimer(dispatch, response.data.expiresIn * 1000, history);
+            runLogoutTimer(dispatch, 1440000, history);
 
             dispatch(confirmedSignupAction(response.data));
             history.push('/dashboard');
         } catch (error) {
-            console.log(error);
-            const errorMessage = formatError(error);
+            const errorMessage = formatError(error.response.data.error);
             dispatch(signupFailedAction(errorMessage));
         }
     };
@@ -45,16 +44,11 @@ export function loginAction(email, password, history) {
         login(email, password)
             .then((response) => {
                 saveTokenInLocalStorage(response.data);
-                runLogoutTimer(
-                    dispatch,
-                    response.data.expiresIn * 1000,
-                    history,
-                );
+                runLogoutTimer(dispatch, 1440000, history);
                 dispatch(loginConfirmedAction(response.data));
 				history.push('/dashboard');                
             })
             .catch((error) => {
-				//console.log(error);
                 const errorMessage = formatError(error.response.data);
                 dispatch(loginFailedAction(errorMessage));
             });

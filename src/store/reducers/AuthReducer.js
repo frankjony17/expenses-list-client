@@ -8,12 +8,12 @@ import {
 } from '../actions/AuthActions';
 
 const initialState = {
-    auth: {
+    user: {
+        username: '',
         email: '',
-        idToken: '',
-        localId: '',
-        expiresIn: '',
-        refreshToken: '',
+        first_name: '',
+        last_name: '',
+        token: ''
     },
     errorMessage: '',
     successMessage: '',
@@ -24,7 +24,7 @@ export function AuthReducer(state = initialState, action) {
     if (action.type === SIGNUP_CONFIRMED_ACTION) {
         return {
             ...state,
-            auth: action.payload,
+            user: action.payload,
             errorMessage: '',
             successMessage: 'Signup Successfully Completed',
             showLoading: false,
@@ -33,7 +33,7 @@ export function AuthReducer(state = initialState, action) {
     if (action.type === LOGIN_CONFIRMED_ACTION) {
         return {
             ...state,
-            auth: action.payload,
+            user: action.payload,
             errorMessage: '',
             successMessage: 'Login Successfully Completed',
             showLoading: false,
@@ -45,12 +45,12 @@ export function AuthReducer(state = initialState, action) {
             ...state,
             errorMessage: '',
             successMessage: '',
-            auth: {
+            user: {
+                username: '',
                 email: '',
-                idToken: '',
-                localId: '',
-                expiresIn: '',
-                refreshToken: '',
+                first_name: '',
+                last_name: '',
+                token: ''
             },
         };
     }
