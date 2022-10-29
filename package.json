@@ -12,6 +12,7 @@
     "@fullcalendar/timegrid": "^5.4.0",
     "@loadable/component": "^5.15.2",
     "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
@@ -74,7 +75,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sass": "node-sass --watch src/scss/main.scss src/css/style.css --source-map src/css/style.css.map"
+    "sass": "node-sass --watch src/assets/scss/main.scss src/assets/css/style.css --source-map src/assets/css/style.css.map"
   },
   "eslintConfig": {
     "extends": [
@@ -94,7 +95,8 @@
       "last 1 safari version"
     ]
   },
-  "main": "index.js","author": "Frank Ricardo Ramirez",
+  "main": "index.js",
+  "author": "Frank Ricardo Ramirez",
   "license": "See license in https://github.com/frankjony17/expenses-list-client/blob/main/LICENSE",
   "description": "This project was created to save time and money with features that make your shopping that much better.",
   "bugs": {
@@ -105,6 +107,7 @@
     "url": "git+https://github.com/frankjony17/expenses-list-client.git"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^7.0.1",
     "process": "^0.11.10"
   }
 }
