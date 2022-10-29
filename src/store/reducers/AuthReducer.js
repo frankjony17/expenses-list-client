@@ -5,6 +5,7 @@ import {
     LOGOUT_ACTION,
     SIGNUP_CONFIRMED_ACTION,
     SIGNUP_FAILED_ACTION,
+    THEME_ACTION,
 } from '../actions/AuthActions';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     errorMessage: '',
     successMessage: '',
     showLoading: false,
+    themeContext: { value: "dark", label: "Dark" }
 };
 
 export function AuthReducer(state = initialState, action) {
@@ -71,6 +73,20 @@ export function AuthReducer(state = initialState, action) {
         return {
             ...state,
             showLoading: action.payload,
+        };
+    }
+
+    if (action.type === LOADING_TOGGLE_ACTION) {
+        return {
+            ...state,
+            showLoading: action.payload,
+        };
+    }
+
+    if (action.type === THEME_ACTION) {
+        return {
+            ...state,
+            themeContext: action.payload,
         };
     }
     return state;

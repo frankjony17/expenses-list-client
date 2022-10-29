@@ -1,14 +1,15 @@
 /// Menu
 import MetisMenu from "metismenujs";
 import React, { Component, useContext, useEffect , useState} from "react";
-
 /// Scroll
 import PerfectScrollbar from "react-perfect-scrollbar";
-
 /// Link
 import { Link } from "react-router-dom";
 import {useScrollPosition} from "@n8tb1t/use-scroll-position";
+import { connect, useDispatch } from 'react-redux';
+
 import { ThemeContext } from "../../../context/ThemeContext";
+import { changeThemeAction } from '../../../store/actions/AuthActions';
 
 
 class MM extends Component {
@@ -83,11 +84,16 @@ const SideBar = () => {
         "shopping-lists"
     ],
     themes = [
-        "dashboard",
-        "dashboard-dark"
+        "dashboard"
     ];
 
-  return (
+    const dispatch = useDispatch();
+
+    const changeTheme = (theme) => {
+        dispatch(changeThemeAction({ value: theme, label: theme.charAt(0).toUpperCase() + theme.slice(1) }));
+    }
+
+    return (
     <div
       className={`dlabnav ${iconHover} ${
         sideBarPosition.value === "fixed" &&
@@ -140,8 +146,8 @@ const SideBar = () => {
                     <span className="nav-text">Themes</span>
                 </Link>
                 <ul >
-                    <li><Link className={`${path === "dashboard" ? "mm-active" : ""}`} to="/dashboard"> Light</Link></li>
-                    <li><Link className={`${path === "dashboard-dark" ? "mm-active" : ""}`} to="/dashboard-dark"> Dark</Link></li>
+                    <li onClick={() => changeTheme("light")}><Link className={`${path === "dashboard" ? "mm-active" : ""}`} to="/dashboard-light"> Light</Link></li>
+                    <li onClick={() => changeTheme("dark")}><Link className={`${path === "dashboard" ? "mm-active" : ""}`} to="/dashboard-dark"> Dark</Link></li>
                 </ul>
             </li>
         </MM>
@@ -150,7 +156,13 @@ const SideBar = () => {
 		</div>
       </PerfectScrollbar>
     </div>
-  );
+    );
 };
 
-export default SideBar;
+const mapStateToProps = (state) => {
+    return {
+        themeContext: state.auth.themeContext,
+    };
+};
+
+export default connect(mapStateToProps)(SideBar);

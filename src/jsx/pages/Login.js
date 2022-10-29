@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { loadingToggleAction,loginAction,
-} from '../../store/actions/AuthActions';
+
+import { loadingToggleAction,loginAction } from '../../store/actions/AuthActions';
 
 // image
 import logo from "../../images/logo-full.png";
-import loginbg from "../../images/pic1.png";
 
 function Login (props) {
-  const [email, setEmail] = useState('demo@example.com');
+  const [email, setEmail] = useState('user@example.com');
     let errorsObj = { email: '', password: '' };
     const [errors, setErrors] = useState(errorsObj);
     const [password, setPassword] = useState('123456');
@@ -20,7 +19,8 @@ function Login (props) {
         e.preventDefault();
         let error = false;
         const errorObj = { ...errorsObj };
-        if (email === '') {
+
+		if (email === '') {
             errorObj.email = 'Email is Required';
             error = true;
         }
@@ -29,10 +29,11 @@ function Login (props) {
             error = true;
         }
         setErrors(errorObj);
+
         if (error) {
-			return ;
+			return;
 		}
-		dispatch(loadingToggleAction(true));	
+		dispatch(loadingToggleAction(true));
         dispatch(loginAction(email, password, props.history));
     }
 
@@ -44,16 +45,15 @@ function Login (props) {
 						<img src={logo} alt="" />
 					</div>
 					<h3 className="mb-2">Welcome back!</h3>
-					<p>User Experience & Interface Design <br />Strategy SaaS Solutions</p>
+					<p>Using s checklist can help you resist impulse buys and tempting sales, <br />and therefore spend less!</p>
 				</div>
-				<div className="aside-image" style={{backgroundImage:"url(" + loginbg + ")"}}></div>
 			</div>
 			<div className="container flex-row-fluid d-flex flex-column justify-content-center position-relative overflow-hidden p-7 mx-auto">
 				<div className="d-flex justify-content-center h-100 align-items-center">
 					<div className="authincation-content style-2">
 						<div className="row no-gutters">
 							<div className="col-xl-12 tab-content">
-								<div id="sign-in" className="auth-form   form-validation">
+								<div id="sign-in" className="auth-form form-validation">
 									{props.errorMessage && (
 										<div className='bg-red-300 text-red-900 border border-red-900 p-1 my-2'>
 											{props.errorMessage}
@@ -113,10 +113,9 @@ function Login (props) {
 					</div>
 				</div>
 			</div>
-		</div>	
-		
+		</div>
   );
-};
+}
 
 const mapStateToProps = (state) => {
     return {

@@ -27,7 +27,7 @@ export const signUp = async (user) => {
     );
 };
 
-export function login(email, password) {
+export const login = async (email, password) => {
     const postData = {
         username: email,
         password
@@ -63,7 +63,10 @@ export function formatError(error) {
             let errors = error.details.error;
             SweetAlert(Array.isArray(errors) ? errors.join('\n') : errors, "error");
             break;
+        case 'detail' in error.details: // Incorrect authentication credentials. 401
+            return Array.isArray(error.details.detail) ? error.details.detail.join('\n') : error.details.detail;
         default:
+            console.log(error);
             return '';
     }
 }

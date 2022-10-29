@@ -11,7 +11,6 @@ import Footer from "./layouts/Footer";
 import ScrollToTop from "./layouts/ScrollToTop";
 /// Dashboard
 import Home from "./components/Dashboard/Home";
-import DashboardDark from "./components/Dashboard/DashboardDark";
 import Messages from "./components/Dashboard/Messages";
 import LatestActivity from "./components/Dashboard/LatestActivity";
 import Task from "./components/Dashboard/Task";
@@ -28,7 +27,7 @@ const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
   const routes = [
     /// Dashboard
-    { url: "", component: DashboardDark },
+    { url: "", component: Home },
     { url: "messages", component: Messages },
     { url: "latest-activity", component: LatestActivity },
     { url: "task", component: Task },
@@ -43,8 +42,8 @@ const Markup = () => {
     { url: "shopping-lists", component: ProductDetail },
 
     /// Themes
-    { url: "dashboard", component: Home },
-    { url: "dashboard-dark", component: DashboardDark },
+    { url: "dashboard-light", component: Home },
+    { url: "dashboard-dark", component: Home },
 
     /// Apps
     { url: "app-profile", component: AppProfile },

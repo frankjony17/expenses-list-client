@@ -3,11 +3,13 @@ import React,{ useContext, useEffect} from 'react';
 //Import Components
 import { ThemeContext } from "../../../context/ThemeContext";
 
+import { store } from '../../../store/store';
 
 const Home = () => {
 	const { changeBackground } = useContext(ThemeContext);
+
 	useEffect(() => {
-		changeBackground({ value: "light", label: "Light" });
+		changeBackground(store.getState().auth.themeContext);
 	},// eslint-disable-next-line
 	[]);
 
