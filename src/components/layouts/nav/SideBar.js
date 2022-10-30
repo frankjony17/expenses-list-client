@@ -9,7 +9,7 @@ import {useScrollPosition} from "@n8tb1t/use-scroll-position";
 import { connect, useDispatch } from 'react-redux';
 
 import { ThemeContext } from "../../../context/ThemeContext";
-import {themeChange} from "../../../store/reducers/authSlice";
+import {themeChange} from "../../../pages/auth/state/authSlice";
 
 
 class MM extends Component {

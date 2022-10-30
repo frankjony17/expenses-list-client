@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-import { loginAction } from '../store/actions/authActions';
-import {loadingToggle} from "../store/reducers/authSlice";
+import { loginAction } from './state/authActions';
+import {loadingToggle} from "./state/authSlice";
 
 // image
-import logo from "../assets/images/logo-full.png";
+import logo from "../../assets/images/logo-full.png";
 
 
 function Login (props) {

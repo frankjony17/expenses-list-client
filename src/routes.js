@@ -2,9 +2,6 @@ import React, { useContext } from "react";
 /// React router dom
 import {  Switch, Route } from "react-router-dom";
 
-/// Css
-import "./index.css";
-
 /// Layout
 import Nav from "./components/layouts/nav";
 import Footer from "./components/layouts/Footer";
@@ -22,7 +19,7 @@ import ProductDetail from "./components/AppsMenu/Shop/ProductGrid/ProductDetail"
 import { ThemeContext } from "./context/ThemeContext";
 import Inbox from "./components/AppsMenu/Email/Inbox/Inbox";
 import Read from "./components/AppsMenu/Email/Read/Read";
-import Type from "./pages/Products/Type";
+import Type from "./pages/products/Type";
 
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
@@ -33,7 +30,7 @@ const Markup = () => {
     { url: "latest-activity", component: LatestActivity },
     { url: "task", component: Task },
 
-    /// Products
+    /// products
     { url: "products-my", component: AppProfile },
     { url: "products-system", component: Compose },
     { url: "products-type", component: Type },

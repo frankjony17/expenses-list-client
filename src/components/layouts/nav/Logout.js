@@ -2,8 +2,8 @@ import React  from 'react';
 import {connect, useDispatch } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
-import { isAuthenticated } from '../../../store/selectors/authSelectors';
-import {logout} from "../../../store/reducers/authSlice";
+import { isAuthenticated } from '../../../pages/auth/state/authSelectors';
+import {logout} from "../../../pages/auth/state/authSlice";
 
 function LogoutPage(props){
     const dispatch = useDispatch();

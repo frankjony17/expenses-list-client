@@ -3,7 +3,7 @@ import React,{ useContext, useEffect} from 'react';
 //Import Components
 import { ThemeContext } from "../../context/ThemeContext";
 
-import { store } from '../../store/store';
+import { store } from '../../store';
 
 const Home = () => {
 	const { changeBackground } = useContext(ThemeContext);

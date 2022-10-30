@@ -7,7 +7,7 @@ import SimpleReactLightbox from "simple-react-lightbox";
 import reportWebVitals from "./reportWebVitals";
 
 import App from "./App";
-import {store} from './store/store';
+import {store} from './store';
 import ThemeContext  from "./context/ThemeContext";
 
 

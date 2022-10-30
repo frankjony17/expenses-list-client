@@ -6,19 +6,19 @@ import { connect, useDispatch } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 // action
 import { checkAutoLogin } from './services/auth/authService';
-import { isAuthenticated } from './store/selectors/authSelectors';
+import { isAuthenticated } from './pages/auth/state/authSelectors';
 /// Style
 import "./assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css";
 import "./assets/css/style.css";
 
 
-const SignUp = lazy(() => import('./pages/Registration'));
+const SignUp = lazy(() => import('./pages/auth/Registration'));
 
-const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
+const ForgotPassword = lazy(() => import('./pages/auth/ForgotPassword'));
 
 const Login = lazy(() => {
     return new Promise(resolve => {
-    setTimeout(() => resolve(import('./pages/Login')), 500);
+    setTimeout(() => resolve(import('./pages/auth/Login')), 500);
   });
 });
 

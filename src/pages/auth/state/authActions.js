@@ -4,10 +4,10 @@ import {
     runLogoutTimer,
     saveTokenInLocalStorage,
     signUp,
-} from '../../services/auth/authService';
+} from '../../../services/auth/authService';
 
 
-import { loginSignupFailed, loginSignupConfirmed } from "../reducers/authSlice";
+import { loginSignupFailed, loginSignupConfirmed } from "./authSlice";
 
 
 export const signupAction = (user, history) => {

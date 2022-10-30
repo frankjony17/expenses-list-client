@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { store } from '../store/store';
+import { store } from '../store';
 
 const axiosInstance = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_HOST}`,

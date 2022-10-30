@@ -2,12 +2,12 @@ import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import { connect, useDispatch } from 'react-redux';
 
-import { signupAction } from '../store/actions/authActions';
-import { loadingToggle } from "../store/reducers/authSlice";
-import { SweetAlert} from "../utils";
+import { signupAction } from './state/authActions';
+import { loadingToggle } from "./state/authSlice";
+import { SweetAlert} from "../../utils";
 
 // image
-import logo from "../assets/images/logo-full.png";
+import logo from "../../assets/images/logo-full.png";
 
 function Register(props) {
     let errorsObj = {

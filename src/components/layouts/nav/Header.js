@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 /// Scroll
 import PerfectScrollbar from "react-perfect-scrollbar";
 
-import { store } from '../../../store/store';
+import { store } from '../../../store';
 
 /// Image
 import profile from "../../../assets/images/user.jpg";

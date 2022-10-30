@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { SweetAlert } from "../../utils";
-import {loginSignupConfirmed, logout} from "../../store/reducers/authSlice";
+import {loginSignupConfirmed, logout} from "../../pages/auth/state/authSlice";
 
 
 const HEADERS = {
@@ -38,38 +38,6 @@ export const login = async (email, password) => {
     );
 }
 
-export function formatError(error) {
-    switch (true) {
-        case 'email' in error.details:
-            let error_email = error.details.email;
-            SweetAlert(
-                Array.isArray(error_email) ? `Email: ${error_email.join('\n')}` : `Email: ${error_email}`,
-                "error");
-            break;
-        case 'username' in error.details:
-            let error_username = error.details.username;
-            SweetAlert(
-                Array.isArray(error_username) ? `Username: ${error_username.join('\n')}` : `Username: ${error_username}`,
-                "error");
-           break;
-        case 'password' in error.details:
-            let error_password = error.details.password;
-            SweetAlert(
-                Array.isArray(error_password) ? `Password: ${error_password.join('\n')}` : `Password: ${error_password}`,
-                "error");
-            break;
-        case 'error' in error.details:
-            let errors = error.details.error;
-            SweetAlert(Array.isArray(errors) ? errors.join('\n') : errors, "error");
-            break;
-        case 'detail' in error.details: // Incorrect authentication credentials. 401
-            return Array.isArray(error.details.detail) ? error.details.detail.join('\n') : error.details.detail;
-        default:
-            console.log(error);
-            return '';
-    }
-}
-
 export function saveTokenInLocalStorage(tokenDetails) {
     tokenDetails.expireDate = new Date(
         new Date().getTime() + 1440000, // 24 hours
@@ -103,4 +71,36 @@ export function checkAutoLogin(dispatch, history) {
 
     const timer = expireDate.getTime() - todayDate.getTime();
     runLogoutTimer(dispatch, timer, history);
+}
+
+export function formatError(error) {
+    switch (true) {
+        case 'email' in error.details:
+            let error_email = error.details.email;
+            SweetAlert(
+                Array.isArray(error_email) ? `Email: ${error_email.join('\n')}` : `Email: ${error_email}`,
+                "error");
+            break;
+        case 'username' in error.details:
+            let error_username = error.details.username;
+            SweetAlert(
+                Array.isArray(error_username) ? `Username: ${error_username.join('\n')}` : `Username: ${error_username}`,
+                "error");
+            break;
+        case 'password' in error.details:
+            let error_password = error.details.password;
+            SweetAlert(
+                Array.isArray(error_password) ? `Password: ${error_password.join('\n')}` : `Password: ${error_password}`,
+                "error");
+            break;
+        case 'error' in error.details:
+            let errors = error.details.error;
+            SweetAlert(Array.isArray(errors) ? errors.join('\n') : errors, "error");
+            break;
+        case 'detail' in error.details: // Incorrect authentication credentials. 401
+            return Array.isArray(error.details.detail) ? error.details.detail.join('\n') : error.details.detail;
+        default:
+            console.log(error);
+            return '';
+    }
 }
