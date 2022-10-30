@@ -1,2 +1,2 @@
 
-export { default as SweetAlert} from './SweetAlert2';
+export { default as sweetAlert} from './sweetAlert2';

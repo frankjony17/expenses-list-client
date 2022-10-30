@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux';
 
 import { signupAction } from './state/authActions';
 import { loadingToggle } from "./state/authSlice";
-import { SweetAlert} from "../../utils";
+import { sweetAlert } from "../../utils";
 
 // image
 import logo from "../../assets/images/logo-full.png";
@@ -31,41 +31,41 @@ function Register(props) {
         if (firstName === '') {
             errorObj.firstName = 'First Name is Required';
             error = true;
-            SweetAlert(errorObj.firstName, "error");
+            sweetAlert(errorObj.firstName, "error");
         }
 
         if (lastName === '') {
             errorObj.lastName = 'Last Name is Required';
             error = true;
-            SweetAlert(errorObj.lastName, "error");
+            sweetAlert(errorObj.lastName, "error");
         }
 
         if (email === '') {
             errorObj.email = 'Email is Required'
             error = true;
-            SweetAlert(errorObj.email, "error");
+            sweetAlert(errorObj.email, "error");
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
             errorObj.email = 'Invalid email address'
             error = true;
-            SweetAlert(errorObj.email, "error");
+            sweetAlert(errorObj.email, "error");
         }
 
         if (password1 === '') {
             errorObj.password1 = 'Password is Required';
             error = true;
-            SweetAlert(errorObj.password1, "error");
+            sweetAlert(errorObj.password1, "error");
         }
 
         if (password1.length < 6) {
             errorObj.password2 = 'Password must have at least 6 characters';
             error = true;
-            SweetAlert(errorObj.password2, "error");
+            sweetAlert(errorObj.password2, "error");
         }
 
         if (password1 !== password2) {
             errorObj.password2 = 'Passwords do not match';
             error = true;
-            SweetAlert(errorObj.password2, "error");
+            sweetAlert(errorObj.password2, "error");
         }
 
         setErrors(errorObj);

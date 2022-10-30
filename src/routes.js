@@ -19,7 +19,7 @@ import ProductDetail from "./components/AppsMenu/Shop/ProductGrid/ProductDetail"
 import { ThemeContext } from "./context/ThemeContext";
 import Inbox from "./components/AppsMenu/Email/Inbox/Inbox";
 import Read from "./components/AppsMenu/Email/Read/Read";
-import Type from "./pages/products/Type";
+import ProductType from "./pages/products/ProductType";
 
 const Markup = () => {
   const { menuToggle } = useContext(ThemeContext);
@@ -33,7 +33,7 @@ const Markup = () => {
     /// products
     { url: "products-my", component: AppProfile },
     { url: "products-system", component: Compose },
-    { url: "products-type", component: Type },
+    { url: "products-type", component: ProductType },
     { url: "products-category", component: Compose },
 
     /// Shopping

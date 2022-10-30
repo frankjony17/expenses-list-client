@@ -304,7 +304,7 @@ const MsgBox = ({ avatar1, avatar2, openMsg, PerfectScrollbar, offMsg }) => {
             <div className="input-group">
                <textarea
                   className="form-control"
-                  placeholder="Type your message..."
+                  placeholder="ProductType your message..."
                ></textarea>
                <div className="input-group-append">
                   <button type="button" className="btn btn-primary">

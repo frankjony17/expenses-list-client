@@ -74,7 +74,7 @@ function Login (props) {
 												<input type="email" className="form-control"
 													value={email}
 												   onChange={(e) => setEmail(e.target.value)}
-												   placeholder="Type Your Email Address"
+												   placeholder="ProductType Your Email Address"
 												/>
 											</div>
 											{errors.email && <div className="text-danger fs-12">{errors.email}</div>}
@@ -85,7 +85,7 @@ function Login (props) {
 											  type="password"
 											  className="form-control"
 											  value={password}
-											  placeholder="Type Your Password"
+											  placeholder="ProductType Your Password"
 												onChange={(e) =>
 													setPassword(e.target.value)
 												}

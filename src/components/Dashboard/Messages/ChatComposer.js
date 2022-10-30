@@ -42,7 +42,7 @@ export default class ChatComposer extends Component {
 						<div className="input-group">							
 							<input 
 								className="form-control text-area"
-								placeholder="Type your message..." 
+								placeholder="ProductType your message..."
 								onChange={this.handleCompose}
 								value={this.state.new}					
 							/>

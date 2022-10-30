@@ -20,8 +20,8 @@ export const signupAction = (user, history) => {
 
             dispatch(loginSignupConfirmed(response.data));
             history.push('/dashboard');
-        } catch (error) {
-            const errorMessage = formatError(error.response.data.error);
+        } catch (err) {
+            const errorMessage = formatError(err);
             dispatch(loginSignupFailed(errorMessage));
         }
     };
@@ -37,8 +37,8 @@ export function loginAction(email, password, history) {
 
             dispatch(loginSignupConfirmed(response.data));
             history.push('/dashboard');
-        } catch (error) {
-            const errorMessage = formatError(error.response.data.error);
+        } catch (err) {
+            const errorMessage = formatError(err);
             dispatch(loginSignupFailed(errorMessage));
         }
     };
