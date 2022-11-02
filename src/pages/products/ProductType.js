@@ -1,6 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from "react";
 import {getProductsAction} from "./state/productTypeActions";
+import Card from "../../components/UI/Card";
+import Table from "../../components/UI/Table";
+import PageTitle from "../../components/layouts/PageTitle";
 
 
 const ProductType = () => {
@@ -8,43 +11,39 @@ const ProductType = () => {
 
     const productTypes = useSelector((state) => state.productType.types);
 
-    useEffect(() => { dispatch(getProductsAction()); }, []);
+    useEffect(() =>
+        { dispatch(getProductsAction()); },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        []
+    );
 
     return(
-        <div className="col-12">
-            <div className="card">
-                <div className="card-header">
-                    <h4 className="card-title">Product Types</h4>
-                </div>
-                <div className="card-body">
-                    <div className="table-responsive">
-                        <div id="job_data" className="dataTables_wrapper">
+        <>
+            <PageTitle activeMenu="Products Type" motherMenu="Products" />
 
-                            <table className="display w-100 dataTable" role="grid" aria-describedby="example5_info">
-                                <thead>
-                                <tr role="row">
-                                    <th className="sorting_asc" style={{ width: "177px" }}>
-                                        Type
-                                    </th>
-                                    <th className="sorting" style={{ width: "278px" }}>
-                                        Description
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {productTypes.map((type) => (
-                                    <tr className="odd" role="row">
-                                        <td className="sorting_1">{type.type}</td>
-                                        <td>{type.description}</td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <Card>
+                <Table id="product-type" described="product-types">
+                    <thead>
+                    <tr role="row">
+                        <th className="sorting_asc" style={{ width: "177px" }}>
+                            Type
+                        </th>
+                        <th className="sorting" style={{ width: "278px" }}>
+                            Description
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {productTypes.map((type) => (
+                        <tr className="odd" role="row" key={type.id}>
+                            <td className="sorting_1">{type.type}</td>
+                            <td>{type.description}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </Table>
+            </Card>
+        </>
     )
 }
 

@@ -11,7 +11,7 @@ const sweetAlert = (
         config = Object.assign({}, config, params);
         config = Object.assign({}, config, {text: message});
     }
-
+    console.log(config);
     Swal.fire(config).then();
 };
 
